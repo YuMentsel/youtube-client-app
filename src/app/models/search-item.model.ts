@@ -12,11 +12,6 @@ interface Thumbnail {
   maxres: ThumbnailItem;
 }
 
-interface Localized {
-  title: string;
-  description: string;
-}
-
 interface Snippet {
   publishedAt: string;
   channelId: string;
@@ -28,7 +23,10 @@ interface Snippet {
   categoryId: string;
   liveBroadcastContent: string;
   defaultLanguage?: string;
-  localized: Localized;
+  localized: {
+    title: string;
+    description: string;
+  };
   defaultAudioLanguage: string;
 }
 
