@@ -1,0 +1,20 @@
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__input {
+    width: 400px;
+    height: 24px;
+    padding: 5px;
+    background-color: #efefef;
+    border: none;
+    outline: none;
+  }
+
+  &__button {
+    height: 24px;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
