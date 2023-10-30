@@ -7,9 +7,13 @@ import { SortSettings } from './models/sort-settings.model';
 })
 export class AppComponent {
   title = 'youtube-client-app';
+
   searchValue = '';
+
   sortType = '';
+
   sortDir = '';
+
   sortValue = '';
 
   submitSearchForm(value: string): void {

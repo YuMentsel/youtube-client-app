@@ -8,8 +8,11 @@ import { SortSettings } from '../../../models/sort-settings.model';
 })
 export class HeaderComponent {
   isSortForm = false;
+
   @Output() submitSearch = new EventEmitter<string>();
+
   @Output() setSortSettings = new EventEmitter<SortSettings>();
+
   @Output() setSortValue = new EventEmitter<string>();
 
   submitSearchingValue(submitValue: string) {

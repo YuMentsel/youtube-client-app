@@ -9,7 +9,10 @@ import { response } from '../../../data/response';
 })
 export class SearchResultsComponent {
   searchItems: SearchItem[] = response.items;
+
   @Input() sortType = '';
+
   @Input() sortDir = '';
+
   @Input() sortValue = '';
 }

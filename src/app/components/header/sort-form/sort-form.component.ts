@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SortSettings } from 'src/app/models/sort-settings.model';
+import { SortSettings } from '../../../models/sort-settings.model';
 
 @Component({
   selector: 'app-sort-form',
@@ -8,8 +8,11 @@ import { SortSettings } from 'src/app/models/sort-settings.model';
 })
 export class SortFormComponent {
   sortDir = '';
+
   sortValue = '';
+
   @Output() setSortSettings = new EventEmitter<SortSettings>();
+
   @Output() setSortingValue = new EventEmitter<string>();
 
   setSortingType(sortType: string) {
