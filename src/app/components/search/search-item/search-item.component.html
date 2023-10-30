@@ -20,5 +20,5 @@
 
   <h3 class="search-item__title">{{ searchItem.snippet.title }}</h3>
   <button class="search-item__button" mat-raised-button color="primary">more...</button>
-  <div class="search-item__status"></div>
+  <div class="search-item__status" [appStatusColor]="searchItem.snippet.publishedAt"></div>
 </div>

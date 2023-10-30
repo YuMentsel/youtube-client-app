@@ -6,7 +6,7 @@ import { SearchItem } from '../models/search-item.model';
 })
 export class SortByTypePipe implements PipeTransform {
   transform(items: SearchItem[], sortType: string, sortDir: string): SearchItem[] {
-    const dir = sortDir === 'asc' ? 1 : -1;
+    const dir = sortDir === 'asc' ? -1 : 1;
     switch (sortType) {
       case 'date': {
         return items.sort(
