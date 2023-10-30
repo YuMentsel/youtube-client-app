@@ -1,5 +1,8 @@
 <main class="main">
   <div class="main__container container">
-    <app-search-item *ngFor="let item of searchItems" [searchItem]="item"></app-search-item>
+    <app-search-item
+      *ngFor="let item of searchItems | sortByValue: sortValue | sortByType: sortType : sortDir"
+      [searchItem]="item"
+    ></app-search-item>
   </div>
 </main>

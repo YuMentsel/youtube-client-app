@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SearchItem } from '../../../models/search-item.model';
 import { response } from '../../../data/response';
 
@@ -9,4 +9,7 @@ import { response } from '../../../data/response';
 })
 export class SearchResultsComponent {
   searchItems: SearchItem[] = response.items;
+  @Input() sortType = '';
+  @Input() sortDir = '';
+  @Input() sortValue = '';
 }

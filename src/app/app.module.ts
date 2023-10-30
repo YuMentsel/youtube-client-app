@@ -12,6 +12,9 @@ import { SearchFormComponent } from './components/header/search-form/search-form
 import { SortFormComponent } from './components/header/sort-form/sort-form.component';
 import { SearchResultsComponent } from './components/search/search-results/search-results.component';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
+import { FormsModule } from '@angular/forms';
+import { SortByValuePipe } from './pipes/sort-by-value.pipe';
+import { SortByTypePipe } from './pipes/sort-by-type.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { SearchItemComponent } from './components/search/search-item/search-item
     SortFormComponent,
     SearchResultsComponent,
     SearchItemComponent,
+    SortByValuePipe,
+    SortByTypePipe,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,7 @@ import { SearchItemComponent } from './components/search/search-item/search-item
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
