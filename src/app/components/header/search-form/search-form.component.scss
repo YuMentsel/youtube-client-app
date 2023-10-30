@@ -4,7 +4,7 @@
   align-items: center;
 
   &__input {
-    width: 400px;
+    width: 396px;
     height: 24px;
     padding: 5px;
     background-color: #efefef;
@@ -14,7 +14,10 @@
 
   &__button {
     height: 24px;
-    font-size: 12px;
+    width: 80px;
+    font-size: 0.7rem;
     font-weight: 400;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 2px 0px 4px 0px #2979ff;
   }
 }
