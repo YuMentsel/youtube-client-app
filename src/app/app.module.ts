@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +13,7 @@ import { SearchResultsComponent } from './components/search/search-results/searc
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
 import { SortByValuePipe } from './pipes/sort-by-value.pipe';
 import { SortByTypePipe } from './pipes/sort-by-type.pipe';
-import { StatusColorDirective } from './directives/status-color.directive';
+import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
@@ -24,20 +23,19 @@ import { StatusColorDirective } from './directives/status-color.directive';
     SearchFormComponent,
     SortFormComponent,
     SearchResultsComponent,
-    SearchItemComponent,
     SortByValuePipe,
     SortByTypePipe,
-    StatusColorDirective,
   ],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatButtonModule,
     FormsModule,
+    CustomButtonComponent,
+    SearchItemComponent,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

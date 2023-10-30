@@ -3,6 +3,7 @@ import { Colors, Period } from '../constants/enums';
 
 @Directive({
   selector: '[appStatusColor]',
+  standalone: true,
 })
 export class StatusColorDirective implements OnInit {
   @Input() appStatusColor!: string;

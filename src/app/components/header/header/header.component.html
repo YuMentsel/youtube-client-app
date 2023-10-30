@@ -6,15 +6,9 @@
       </div>
 
       <app-search-form (submitSearch)="submitSearchingValue($event)"></app-search-form>
-      <button
-        class="header__settings"
-        mat-raised-button
-        color="primary"
-        (click)="isSortForm = !isSortForm"
-        width="24"
-      >
+      <app-custom-button class="header__settings" (click)="isSortForm = !isSortForm" width="24">
         <mat-icon class="header__settings-icon">tune</mat-icon>
-      </button>
+      </app-custom-button>
     </div>
 
     <app-profile></app-profile>

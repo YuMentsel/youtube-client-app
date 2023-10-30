@@ -12,12 +12,7 @@
     outline: none;
   }
 
-  &__button {
-    height: 24px;
-    width: 80px;
-    font-size: 0.7rem;
-    font-weight: 400;
-    border-radius: 0 5px 5px 0;
-    box-shadow: 2px 0px 4px 0px #2979ff;
+  span {
+    margin: 0 20px;
   }
 }

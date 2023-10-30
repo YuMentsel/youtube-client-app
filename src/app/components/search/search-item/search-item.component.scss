@@ -46,16 +46,13 @@
 
   &__button {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 32px;
-    margin-left: 5px;
-    border-radius: 5px;
-    font-size: 0.7rem;
-    font-weight: 400;
-    box-shadow: 2px 0px 4px 0px #2979ff;
+
+    span {
+      margin: 0 35px 0 45px;
+    }
   }
 
   &__status {
