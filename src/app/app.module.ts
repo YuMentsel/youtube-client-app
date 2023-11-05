@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 import { CoreModule } from './core/core.module';
 import { SearchItemComponent } from './youtube/components/search-item/search-item.component';
-import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +16,6 @@ import { YoutubeModule } from './youtube/youtube.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    YoutubeModule,
     CustomButtonComponent,
     SearchItemComponent,
   ],
