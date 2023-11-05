@@ -1,4 +1,4 @@
-import { SearchResponse } from '../models/search-response.model';
+import { SearchResponse } from '../youtube/models/search-response.model';
 
 export const response: SearchResponse = {
   TODO: 'TO BE UPDATED',

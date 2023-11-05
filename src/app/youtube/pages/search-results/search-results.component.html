@@ -1,0 +1,12 @@
+<main *ngIf="searchService.searchValue" class="main">
+  <div class="main__container container">
+    <app-search-item
+      *ngFor="
+        let item of searchItems
+          | sortByValue: sortService.sortValue
+          | sortByType: sortService.sortType : sortService.sortDir
+      "
+      [searchItem]="item"
+    ></app-search-item>
+  </div>
+</main>

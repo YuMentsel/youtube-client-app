@@ -1,0 +1,24 @@
+<div class="search-item">
+  <div class="search-item__preview">
+    <img
+      class="search-item__image"
+      [src]="searchItem.snippet.thumbnails.medium.url"
+      alt="preview"
+    />
+  </div>
+
+  <div class="search-item__statistics">
+    <mat-icon class="search-item__icon">visibility</mat-icon>
+    <span>{{ searchItem.statistics.viewCount }}</span>
+    <mat-icon class="search-item__icon">favorite</mat-icon>
+    <span>{{ searchItem.statistics.likeCount }}</span>
+    <mat-icon class="search-item__icon">heart_broken</mat-icon>
+    <span>{{ searchItem.statistics.dislikeCount }}</span>
+    <mat-icon class="search-item__icon">forum</mat-icon>
+    <span>{{ searchItem.statistics.commentCount }}</span>
+  </div>
+
+  <h3 class="search-item__title">{{ searchItem.snippet.title }}</h3>
+  <app-custom-button class="search-item__button"><span>more...</span></app-custom-button>
+  <div class="search-item__status" [appStatusColor]="searchItem.snippet.publishedAt"></div>
+</div>
