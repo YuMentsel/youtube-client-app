@@ -19,6 +19,8 @@
   </div>
 
   <h3 class="search-item__title">{{ searchItem.snippet.title }}</h3>
-  <app-custom-button class="search-item__button"><span>more...</span></app-custom-button>
+  <app-custom-button class="search-item__button" (click)="showDetailedInfo()"
+    ><span>more...</span></app-custom-button
+  >
   <div class="search-item__status" [appStatusColor]="searchItem.snippet.publishedAt"></div>
 </div>

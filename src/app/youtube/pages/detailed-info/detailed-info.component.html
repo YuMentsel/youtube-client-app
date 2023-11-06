@@ -1,0 +1,26 @@
+<div class="info">
+  <app-custom-button
+    [appStatusColor]="this.searchItem.snippet.publishedAt"
+    class="info__button"
+    (click)="goBack()"
+  >
+    <mat-icon class="info__icon">arrow_back_ios_new</mat-icon>
+  </app-custom-button>
+  <div class="info__preview">
+    <img class="info__image" alt="preview" [src]="searchItem.snippet.thumbnails.standard.url" />
+  </div>
+  <div class="info__container">
+    <div class="info__title">
+      <div class="info__text">{{ searchItem.snippet.title }}</div>
+      <div class="info__date">
+        {{ searchItem.snippet.publishedAt | date: 'fullDate' }}
+      </div>
+    </div>
+    <div class="info__description">
+      <div class="info__subtitle">Description</div>
+      <div class="info__descr">{{ searchItem.snippet.description }}</div>
+    </div>
+    <app-statistics [statistics]="searchItem.statistics" class="info__statistics"></app-statistics>
+    <div [appStatusColor]="this.searchItem.snippet.publishedAt" class="info__status"></div>
+  </div>
+</div>

@@ -1,9 +1,12 @@
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
 import { LoginService } from '../services/login.service';
 
 export const authGuard: CanActivateFn = () => {
   const loginService = inject(LoginService);
-  const router = inject(Router);
-  return !loginService.isLoggedIn() || router.navigate(['/youtube']);
+  if (!loginService.isLoggedIn()) {
+    return true;
+  }
+  window.history.back();
+  return false;
 };

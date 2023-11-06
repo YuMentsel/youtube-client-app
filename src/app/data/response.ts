@@ -97,7 +97,7 @@ export const response: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/uto79F2R8W05GFpiUAcLdFGs7PQ"',
       id: 'Fdf5aTYRW0E',
       snippet: {
-        publishedAt: '2019-01-23T17:46:58.000Z',
+        publishedAt: '2023-11-04T17:46:58.000Z',
         channelId: 'UC29ju8bIPH5as8OGnQzwJyA',
         title: 'Angular Crash Course',
         description:
@@ -543,7 +543,7 @@ export const response: SearchResponse = {
       etag: '"Fznwjl6JEQdo1MGvHOGaz_YanRU/96JEWzuOaAgaHrcnKhmatlZzPME"',
       id: 'rc3E4tplFCU',
       snippet: {
-        publishedAt: '2023-10-09T15:00:14.000Z',
+        publishedAt: '2023-11-05T15:00:14.000Z',
         channelId: 'UCg8ss4xW9jASrqWGP30jXiw',
         title: 'Angular 40 вопросов для собеседования',
         description:

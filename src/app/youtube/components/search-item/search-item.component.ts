@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 import { StatusColorDirective } from '../../directives/status-color.directive';
 import { SearchItem } from '../../models/search-item.model';
 import { CustomButtonComponent } from '../../../components/custom-button/custom-button.component';
@@ -14,4 +15,10 @@ import { CustomButtonComponent } from '../../../components/custom-button/custom-
 })
 export class SearchItemComponent {
   @Input() searchItem!: SearchItem;
+
+  constructor(private router: Router) {}
+
+  showDetailedInfo(): void {
+    this.router.navigate(['/youtube', this.searchItem.id]);
+  }
 }
