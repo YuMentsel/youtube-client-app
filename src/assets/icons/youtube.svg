@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	viewBox="0 0 461.001 461.001" xml:space="preserve">
-	<path style="fill:#2979FF;" d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728
-		c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137
-		C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607
-		c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="732px" height="591px" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 293.76 237.05"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path fill="#2979FF" fill-rule="nonzero" d="M232.75 0l-171.74 0c-33.69,0 -61.01,31.15 -61.01,69.57l0 97.91c0,38.42 27.32,69.57 61.01,69.57l171.74 0c33.69,0 61.01,-31.15 61.01,-69.57l0 -97.91c0,-38.42 -27.32,-69.57 -61.01,-69.57zm-31.02 123.29l-91.6 43.69c-2.44,1.16 -5.26,-0.62 -5.26,-3.32l0 -90.11c0,-2.74 2.89,-4.52 5.34,-3.28l91.6 46.42c2.73,1.38 2.68,5.28 -0.08,6.6z"/>
 </svg>

@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.not-found {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin-bottom: 150px;
+  width: 360px;
+
+  &__descr {
+    color: #828282;
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
