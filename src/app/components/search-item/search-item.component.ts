@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { StatusColorDirective } from '../../directives/status-color.directive';
-import { SearchItem } from '../../models/search-item.model';
-import { CustomButtonComponent } from '../../../components/custom-button/custom-button.component';
+import { StatusColorDirective } from '../../youtube/directives/status-color.directive';
+import { SearchItem } from '../../youtube/models/search-item.model';
+import { CustomButtonComponent } from '../custom-button/custom-button.component';
 
 @Component({
   selector: 'app-search-item',

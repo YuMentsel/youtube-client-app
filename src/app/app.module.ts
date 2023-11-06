@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 import { CoreModule } from './core/core.module';
-import { SearchItemComponent } from './youtube/components/search-item/search-item.component';
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 @NgModule({
   declarations: [AppComponent],
