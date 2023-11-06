@@ -1,1 +1,39 @@
-<p>login works!</p>
+<div class="login">
+  <h3 class="login__title">Login</h3>
+  <form class="login__form" [formGroup]="form" (ngSubmit)="submitForm()">
+    <mat-form-field class="login__field" appearance="fill">
+      <mat-label>Login</mat-label>
+      <input
+        class="login__input"
+        type="text"
+        formControlName="login"
+        placeholder="Done Joe"
+        matInput
+      />
+      <mat-error *ngIf="getLoginError('required')">Enter a login!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="login__field" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        class="login__input"
+        type="password"
+        formControlName="password"
+        placeholder="Yo8*98PaOQip8"
+        matInput
+      />
+      <mat-error *ngIf="getPasswordError('required')">Enter a password!</mat-error>
+      <mat-error *ngIf="getPasswordError('pattern')">Password isn't strong enough!</mat-error>
+    </mat-form-field>
+
+    <button
+      class="login__button"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!form.valid"
+    >
+      Login
+    </button>
+  </form>
+</div>
