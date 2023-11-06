@@ -9,6 +9,7 @@
         formControlName="login"
         placeholder="Done Joe"
         matInput
+        autocomplete="off"
       />
       <mat-error *ngIf="getLoginError('required')">Enter a login!</mat-error>
     </mat-form-field>
@@ -21,6 +22,7 @@
         formControlName="password"
         placeholder="Yo8*98PaOQip8"
         matInput
+        autocomplete="off"
       />
       <mat-error *ngIf="getPasswordError('required')">Enter a password!</mat-error>
       <mat-error *ngIf="getPasswordError('pattern')">Password isn't strong enough!</mat-error>
