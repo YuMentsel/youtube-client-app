@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../auth/services/login.service';
 
@@ -7,22 +7,29 @@ import { LoginService } from '../../../auth/services/login.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit, OnDestroy {
+  userName = '';
   constructor(
     private router: Router,
     private loginService: LoginService,
   ) {}
+
+  ngOnInit(): void {
+    this.loginService.isUser$.subscribe((name) => {
+      this.userName = name;
+    });
+  }
 
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
 
-  isLoggedIn(): boolean {
-    return this.loginService.isLoggedIn();
+  getButtonName(): string {
+    return this.loginService.isLoggedIn() ? 'Logout' : 'Login';
   }
 
-  getButtonName(): string {
-    return this.isLoggedIn() ? 'Logout' : 'Login';
+  ngOnDestroy() {
+    this.loginService.isUser$.unsubscribe();
   }
 }
