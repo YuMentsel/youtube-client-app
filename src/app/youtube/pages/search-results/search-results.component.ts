@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchItem } from '../../models/search-item.model';
+import { Item } from '../../models/search-item.model';
 import { SortService } from '../../../core/services/sort-form/sort-form.service';
 import { YoutubeService } from '../../services/youtube.service';
 
@@ -9,7 +9,7 @@ import { YoutubeService } from '../../services/youtube.service';
   styleUrls: ['./search-results.component.scss'],
 })
 export class SearchResultsComponent implements OnInit {
-  searchItems!: SearchItem[];
+  searchItems!: Item[];
 
   constructor(
     public youtubeService: YoutubeService,
@@ -19,6 +19,7 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit(): void {
     this.youtubeService.searchItems$.subscribe((items) => {
       this.searchItems = items;
+      this.youtubeService.items = items;
     });
   }
 }

@@ -48,3 +48,11 @@ export interface SearchItem {
   snippet: Snippet;
   statistics: Statistics;
 }
+
+export interface Item {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: Snippet;
+  statistics: Statistics;
+}

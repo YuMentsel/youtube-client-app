@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItem } from '../models/search-item.model';
+import { Item } from '../models/search-item.model';
 
 @Pipe({
   name: 'sortByType',
 })
 export class SortByTypePipe implements PipeTransform {
-  transform(items: SearchItem[], sortType: string, sortDir: string): SearchItem[] {
+  transform(items: Item[], sortType: string, sortDir: string): Item[] {
     const dir = sortDir === 'asc' ? -1 : 1;
     switch (sortType) {
       case 'date': {

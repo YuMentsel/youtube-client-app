@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { StatusColorDirective } from '../../youtube/directives/status-color.directive';
-import { SearchItem } from '../../youtube/models/search-item.model';
+import { Item } from '../../youtube/models/search-item.model';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
 
 @Component({
@@ -14,7 +14,7 @@ import { CustomButtonComponent } from '../custom-button/custom-button.component'
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent {
-  @Input() searchItem!: SearchItem;
+  @Input() searchItem!: Item;
 
   constructor(private router: Router) {}
 

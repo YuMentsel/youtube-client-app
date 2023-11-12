@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, mergeMap, switchMap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SearchItem } from '../models/search-item.model';
+import { Item } from '../models/search-item.model';
 import { maxResults } from '../../constants/constants';
-import { SearchResponse } from '../models/search-response.model';
+import { SearchResponse, Response } from '../models/search-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +11,13 @@ import { SearchResponse } from '../models/search-response.model';
 export class YoutubeService {
   searchValue$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
+  items: Item[] = [];
+
   isResults = false;
 
   constructor(private httpClient: HttpClient) {}
 
-  searchItems$: Observable<SearchItem[]> = this.searchValue$.pipe(
+  searchItems$: Observable<Item[]> = this.searchValue$.pipe(
     mergeMap((query) => this.getIdsByValue(query)),
     switchMap((ids) => this.getById(ids)),
   );
@@ -32,11 +34,13 @@ export class YoutubeService {
       .pipe(map((res: SearchResponse) => res.items.map((item) => item.id.videoId).join(',')));
   }
 
-  getById(id: string): Observable<SearchItem[]> {
+  getById(id: string): Observable<Item[]> {
     const params = new HttpParams().set('id', id).set('part', 'snippet,statistics');
 
-    return this.httpClient
-      .get<SearchResponse>('videos', { params })
-      .pipe(map((result) => result.items));
+    return this.httpClient.get<Response>('videos', { params }).pipe(map((result) => result.items));
+  }
+
+  getDetailsById(id: string): Item | undefined {
+    return this.items.find((item) => item.id === id);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchItem } from '../../models/search-item.model';
+import { Item } from '../../models/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { YoutubeService } from '../../services/youtube.service';
 export class DetailedInfoComponent implements OnInit {
   id!: string;
 
-  searchItem!: SearchItem;
+  searchItem!: Item;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,12 +24,12 @@ export class DetailedInfoComponent implements OnInit {
       this.id = params['id'];
     });
 
-    // const item = this.youtubeService.getById(this.id);
-    // if (item) {
-    //   this.searchItem = item;
-    // } else {
-    //   this.router.navigate(['/not-found']);
-    // }
+    const item = this.youtubeService.getDetailsById(this.id);
+    if (item) {
+      this.searchItem = item;
+    } else {
+      this.router.navigate(['/not-found']);
+    }
   }
 
   goBack(): void {

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { BehaviorSubject, Subscription, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { minSearchLength, requestDelay } from '../../../constants/constants';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 
@@ -18,7 +18,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.searchSubscription = this.searchValue$
       .pipe(
-        // filter((value) => value.length >= minSearchLength),
+        filter((value) => value.length >= minSearchLength),
         debounceTime(requestDelay),
         distinctUntilChanged(),
       )
