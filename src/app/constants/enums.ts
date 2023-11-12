@@ -10,3 +10,8 @@ export enum Colors {
   green = '#27AE61',
   blue = '#2979FF',
 }
+
+export enum ENV {
+  BASE_URL = 'https://www.googleapis.com/youtube/v3/',
+  API_KEY = 'AIzaSyB7gWqqflGGkeV_rl_vNwHoNUcvyuwvLkw',
+}

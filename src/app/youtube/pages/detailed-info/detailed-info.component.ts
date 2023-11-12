@@ -24,12 +24,12 @@ export class DetailedInfoComponent implements OnInit {
       this.id = params['id'];
     });
 
-    const item = this.youtubeService.getById(this.id);
-    if (item) {
-      this.searchItem = item;
-    } else {
-      this.router.navigate(['/not-found']);
-    }
+    // const item = this.youtubeService.getById(this.id);
+    // if (item) {
+    //   this.searchItem = item;
+    // } else {
+    //   this.router.navigate(['/not-found']);
+    // }
   }
 
   goBack(): void {

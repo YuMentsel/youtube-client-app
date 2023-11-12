@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SortSettings } from '../../../youtube/models/sort-settings.model';
+import { SortSettings } from '../../models/sort-settings.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +11,12 @@ export class SortService {
 
   sortValue = '';
 
-  setSortSettings(settings: SortSettings) {
+  setSortSettings(settings: SortSettings): void {
     this.sortType = settings.sortType;
     this.sortDir = settings.sortDir;
   }
 
-  setSortingValue(value: string) {
+  setSortingValue(value: string): void {
     this.sortValue = value;
   }
 }

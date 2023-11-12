@@ -1,17 +1,44 @@
-import { Component } from '@angular/core';
-import { SearchService } from '../../services/search-form/search-form.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { minSearchLength, requestDelay } from '../../../constants/constants';
+import { YoutubeService } from '../../../youtube/services/youtube.service';
 
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
 })
-export class SearchFormComponent {
-  searchValue = '';
+export class SearchFormComponent implements OnInit, OnDestroy {
+  searchValue$ = new BehaviorSubject<string>('');
 
-  constructor(private searchService: SearchService) {}
+  searchSubscription!: Subscription;
 
-  submitSearchForm() {
-    this.searchService.setSearchValue(this.searchValue);
+  constructor(private youtubeService: YoutubeService) {}
+
+  ngOnInit(): void {
+    this.searchSubscription = this.searchValue$
+      .pipe(
+        // filter((value) => value.length >= minSearchLength),
+        debounceTime(requestDelay),
+        distinctUntilChanged(),
+      )
+      .subscribe((el) => {
+        this.youtubeService.searchValue$.next(el);
+      });
+  }
+
+  searchVideo(event: KeyboardEvent): void {
+    const value = (event.target as HTMLInputElement).value.trim();
+    const { length } = value;
+    if (length >= minSearchLength) {
+      this.youtubeService.isResults = true;
+      this.searchValue$.next(value);
+    } else {
+      this.youtubeService.isResults = false;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.searchSubscription.unsubscribe();
   }
 }

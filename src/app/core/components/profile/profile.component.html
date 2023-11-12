@@ -1,9 +1,9 @@
-<div class="profile">
+<div class="profile" routerLink="/auth">
   <span>Your Name</span>
   <div class="profile__icon">
     <mat-icon class="profile__account">account_circle</mat-icon>
   </div>
-  <app-custom-button *ngIf="isLoggedIn()" (click)="logout()"
-    ><mat-icon>logout</mat-icon></app-custom-button
+  <app-custom-button class="profile__button" (click)="logout()"
+    ><span>{{ getButtonName() }}</span></app-custom-button
   >
 </div>

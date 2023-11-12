@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
-import { Colors, Period } from '../constants/enums';
+import { Period, Colors } from '../../constants/enums';
 
 @Directive({
   selector: '[appStatusColor]',

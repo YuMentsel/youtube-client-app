@@ -21,4 +21,8 @@ export class ProfileComponent {
   isLoggedIn(): boolean {
     return this.loginService.isLoggedIn();
   }
+
+  getButtonName(): string {
+    return this.isLoggedIn() ? 'Logout' : 'Login';
+  }
 }
