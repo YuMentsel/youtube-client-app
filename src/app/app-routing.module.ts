@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     canActivate: [youtubeGuard],
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [youtubeGuard],
+  },
   { path: '', redirectTo: '/youtube', pathMatch: 'full' },
   {
     path: '**',

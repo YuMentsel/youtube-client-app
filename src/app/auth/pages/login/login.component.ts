@@ -22,10 +22,6 @@ export class LoginComponent {
     this.loginService.login(JSON.stringify(this.form.value));
   }
 
-  checkLength(control: FormControl) {
-    return control.value.trim().length === 0 ? { lengthError: true } : null;
-  }
-
   getLoginError(error: string) {
     return this.form.get('login')?.errors?.[error];
   }
