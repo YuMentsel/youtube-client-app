@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { CustomButtonComponent } from '../components/custom-button/custom-button.component';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -8,7 +9,6 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { SortFormComponent } from './components/sort-form/sort-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SortService } from './services/sort-form/sort-form.service';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [

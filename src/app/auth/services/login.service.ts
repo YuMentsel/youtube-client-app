@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoginService {
   private readonly token = 'userToken';
+
   isUser$ = new BehaviorSubject<string>('');
 
   constructor(private router: Router) {

@@ -9,6 +9,7 @@ import { LoginService } from '../../../auth/services/login.service';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   userName = '';
+
   constructor(
     private router: Router,
     private loginService: LoginService,

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription, debounceTime, distinctUntilChanged, filter } from 'rxjs';
+import { BehaviorSubject, Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { minSearchLength, requestDelay } from '../../../constants/constants';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 
