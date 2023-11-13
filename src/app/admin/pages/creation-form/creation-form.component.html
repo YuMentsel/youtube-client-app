@@ -69,8 +69,43 @@
       <mat-error *ngIf="date?.hasError('notValid')">The date is invalid</mat-error>
     </mat-form-field>
 
+    <ng-container formArrayName="tags">
+      <ng-container *ngFor="let tag of tags.controls; let index = index">
+        <mat-form-field class="admin__field" appearance="fill">
+          <mat-label>Tag</mat-label>
+          <input
+            class="admin__input"
+            type="text"
+            [formControlName]="index"
+            placeholder="tag"
+            matInput
+          />
+          <mat-error *ngIf="tag?.hasError('required')">Please enter a tag</mat-error>
+        </mat-form-field>
+      </ng-container>
+    </ng-container>
+
+    <button
+      class="admin__add-button"
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="addTag()"
+      [disabled]="tags.length === 5"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
     <div class="admin__button-wrap">
-      <button class="admin__button" type="reset" mat-raised-button color="primary">Reset</button>
+      <button
+        class="admin__button"
+        type="reset"
+        mat-raised-button
+        color="primary"
+        (click)="resetForm()"
+      >
+        Reset
+      </button>
 
       <button
         class="admin__button"

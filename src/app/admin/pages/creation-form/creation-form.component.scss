@@ -32,7 +32,8 @@
     width: 300px;
   }
 
-  &__button {
+  &__button,
+  &__add-button {
     width: 120px;
     height: 32px;
     border-radius: 5px;
@@ -43,5 +44,9 @@
       background-color: #c5c5c5;
       color: #575757;
     }
+  }
+  &__add-button {
+    width: 32px;
+    margin-bottom: 20px;
   }
 }

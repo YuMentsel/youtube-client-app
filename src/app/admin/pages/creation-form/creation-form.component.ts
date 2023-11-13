@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { ValidateService } from '../../services/validate.service';
 
 @Component({
@@ -22,6 +22,7 @@ export class CreationFormComponent implements OnInit {
       image: ['', [Validators.required]],
       video: ['', [Validators.required]],
       date: ['', [Validators.required, this.validateService.dateValidator()]],
+      tags: this.formBuilder.array([this.formBuilder.control('', Validators.required)]),
     });
   }
 
@@ -45,8 +46,22 @@ export class CreationFormComponent implements OnInit {
     return this.form.get('date');
   }
 
+  get tags() {
+    return this.form.controls['tags'] as FormArray;
+  }
+
+  addTag() {
+    this.tags.push(this.formBuilder.control('', Validators.required));
+  }
+
   submitForm() {
     localStorage.setItem('card', JSON.stringify(this.form.value));
+    this.resetForm();
+  }
+
+  resetForm() {
     this.form.reset();
+    this.tags.clear();
+    this.addTag();
   }
 }
