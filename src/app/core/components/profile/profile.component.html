@@ -6,4 +6,5 @@
   <app-custom-button class="profile__button" (click)="logout()"
     ><span>{{ getButtonName() }}</span></app-custom-button
   >
+  <app-custom-button class="profile__button" *ngIf="userName" routerLink="/admin"><span>Admin</span></app-custom-button>
 </div>
