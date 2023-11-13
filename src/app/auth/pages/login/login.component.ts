@@ -13,7 +13,7 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService) {
     this.form = new FormGroup({
-      login: new FormControl('', [Validators.required]),
+      login: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.pattern(pattern)]),
     });
   }
