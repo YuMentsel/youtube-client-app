@@ -4,7 +4,7 @@
   <mat-icon class="statistics__icon">favorite</mat-icon>
   <span>{{ statistics.likeCount }}</span>
   <mat-icon class="statistics__icon">heart_broken</mat-icon>
-  <span>{{ statistics.dislikeCount }}</span>
+  <span>{{ statistics.dislikeCount || '42' }}</span>
   <mat-icon class="statistics__icon">forum</mat-icon>
   <span>{{ statistics.commentCount }}</span>
 </div>
