@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, mergeMap, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, filter, map, mergeMap, switchMap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Item } from '../models/search-item.model';
-import { maxResults } from '../../constants/constants';
+import { maxResults, minSearchLength } from '../../constants/constants';
 import { SearchResponse, Response } from '../models/search-response.model';
 
 @Injectable({
@@ -18,6 +18,7 @@ export class YoutubeService {
   constructor(private httpClient: HttpClient) {}
 
   searchItems$: Observable<Item[]> = this.searchValue$.pipe(
+    filter((value) => value.length >= minSearchLength),
     mergeMap((query) => this.getIdsByValue(query)),
     switchMap((ids) => this.getById(ids)),
   );

@@ -8,6 +8,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { SortFormComponent } from './components/sort-form/sort-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SortService } from './services/sort-form/sort-form.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { SortService } from './services/sort-form/sort-form.service';
     NotFoundComponent,
   ],
   providers: [SortService],
-  imports: [CommonModule, SharedModule, CustomButtonComponent],
+  imports: [CommonModule, SharedModule, RouterModule, CustomButtonComponent],
   exports: [
     HeaderComponent,
     ProfileComponent,

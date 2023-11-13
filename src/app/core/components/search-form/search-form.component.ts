@@ -17,11 +17,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchSubscription = this.searchValue$
-      .pipe(
-        filter((value) => value.length >= minSearchLength),
-        debounceTime(requestDelay),
-        distinctUntilChanged(),
-      )
+      .pipe(debounceTime(requestDelay), distinctUntilChanged())
       .subscribe((el) => {
         this.youtubeService.searchValue$.next(el);
       });
