@@ -37,9 +37,11 @@
     border: none;
     background-color: #2979ff;
     color: #ffffff;
+    cursor: pointer;
     &:disabled {
       background-color: #c5c5c5;
       color: #575757;
+      cursor: auto;
     }
   }
 }
