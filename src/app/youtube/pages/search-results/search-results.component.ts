@@ -9,7 +9,7 @@ import { YoutubeService } from '../../services/youtube.service';
   styleUrls: ['./search-results.component.scss'],
 })
 export class SearchResultsComponent implements OnInit {
-  searchItems!: Item[];
+  searchItems: Item[] = [];
 
   constructor(
     public youtubeService: YoutubeService,

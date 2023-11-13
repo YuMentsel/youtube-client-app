@@ -15,7 +15,7 @@ export class YoutubeInterceptor implements HttpInterceptor {
       catchError((err) => {
         const isForbidden = err.status === 403;
         return throwError(() =>
-          isForbidden ? err.status + ' Please, change API key' : err.status + ' ' + err.message,
+          isForbidden ? `${err.status} Please, change API key` : `${err.status} ${err.message}`,
         );
       }),
     );
