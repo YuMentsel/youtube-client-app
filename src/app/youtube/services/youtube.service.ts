@@ -15,13 +15,13 @@ export class YoutubeService {
 
   isResults = false;
 
-  constructor(private httpClient: HttpClient) {}
-
   searchItems$: Observable<Item[]> = this.searchValue$.pipe(
     filter((value) => value.length >= minSearchLength),
     mergeMap((query) => this.getIdsByValue(query)),
     switchMap((ids) => this.getById(ids)),
   );
+
+  constructor(private httpClient: HttpClient) {}
 
   getIdsByValue(query: string): Observable<string> {
     const params = new HttpParams()

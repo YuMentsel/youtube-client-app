@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Item } from '../../models/search-item.model';
 import { SortService } from '../../../core/services/sort-form/sort-form.service';
 import { YoutubeService } from '../../services/youtube.service';
@@ -8,8 +9,10 @@ import { YoutubeService } from '../../services/youtube.service';
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   searchItems: Item[] = [];
+
+  subscription!: Subscription;
 
   constructor(
     public youtubeService: YoutubeService,
@@ -17,9 +20,13 @@ export class SearchResultsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.youtubeService.searchItems$.subscribe((items) => {
+    this.subscription = this.youtubeService.searchItems$.subscribe((items) => {
       this.searchItems = items;
       this.youtubeService.items = items;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
