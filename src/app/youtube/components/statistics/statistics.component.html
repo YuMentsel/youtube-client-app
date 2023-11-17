@@ -1,10 +1,8 @@
 <div class="statistics">
-  <mat-icon class="statistics__icon">visibility</mat-icon>
-  <span>{{ statistics.viewCount | number }}</span>
-  <mat-icon class="statistics__icon">favorite</mat-icon>
-  <span>{{ statistics.likeCount }}</span>
-  <mat-icon class="statistics__icon">heart_broken</mat-icon>
-  <span>{{ statistics.dislikeCount || '42' }}</span>
-  <mat-icon class="statistics__icon">forum</mat-icon>
-  <span>{{ statistics.commentCount }}</span>
+  <span>
+    <mat-icon class="statistics__icon">visibility</mat-icon>
+    {{ statistics.viewCount | number }}
+  </span>
+  <span><mat-icon class="statistics__icon">favorite</mat-icon>{{ statistics.likeCount }}</span>
+  <span><mat-icon class="statistics__icon">forum</mat-icon>{{ statistics.commentCount }}</span>
 </div>

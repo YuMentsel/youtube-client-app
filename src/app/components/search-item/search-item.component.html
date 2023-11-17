@@ -8,14 +8,18 @@
   </div>
 
   <div class="search-item__statistics">
-    <mat-icon class="search-item__icon">visibility</mat-icon>
-    <span>{{ searchItem.statistics.viewCount }}</span>
-    <mat-icon class="search-item__icon">favorite</mat-icon>
-    <span>{{ searchItem.statistics.likeCount }}</span>
-    <mat-icon class="search-item__icon">heart_broken</mat-icon>
-    <span>{{ searchItem.statistics.dislikeCount }}</span>
-    <mat-icon class="search-item__icon">forum</mat-icon>
-    <span>{{ searchItem.statistics.commentCount }}</span>
+    <span>
+      <mat-icon class="search-item__icon">visibility</mat-icon>
+      {{ searchItem.statistics.viewCount }}
+    </span>
+    <span>
+      <mat-icon class="search-item__icon">favorite</mat-icon>
+      {{ searchItem.statistics.likeCount }}
+    </span>
+    <span>
+      <mat-icon class="search-item__icon">forum</mat-icon>
+      {{ searchItem.statistics.commentCount }}
+    </span>
   </div>
 
   <h3 class="search-item__title">{{ searchItem.snippet.title }}</h3>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Direction } from '../../../constants/enums';
 import { SortService } from '../../services/sort-form/sort-form.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SortFormComponent {
   constructor(private sortService: SortService) {}
 
   setSortingType(sortType: string) {
-    this.sortDir = this.sortDir === 'asc' ? 'desc' : 'asc';
+    this.sortDir = this.sortDir === Direction.asc ? Direction.desc : Direction.asc;
     this.sortService.setSortSettings({ sortType, sortDir: this.sortDir });
   }
 

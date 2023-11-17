@@ -11,8 +11,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="getLoginError('required')">Please enter a login email</mat-error>
-      <mat-error *ngIf="getLoginError('email')">The login email is invalid</mat-error>
+      <mat-error>{{ getLoginErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="login__field" appearance="fill">
@@ -25,11 +24,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="getPasswordError('required')">Please enter a password</mat-error>
-      <mat-error *ngIf="getPasswordError('pattern')">
-        Your password isn't strong enough! <br />(min 8 characters, uppercase and lowercase letters,
-        numbers, special character)</mat-error
-      >
+      <mat-error>{{ getPasswordErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <button

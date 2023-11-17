@@ -13,9 +13,10 @@ export class YoutubeInterceptor implements HttpInterceptor {
 
     return next.handle(searchRequest).pipe(
       catchError((err) => {
-        const isForbidden = err.status === 403;
         return throwError(() =>
-          isForbidden ? `${err.status} Please, change API key` : `${err.status} ${err.message}`,
+          err.status === 403
+            ? `${err.status} Please, change API key`
+            : `${err.status} ${err.message}`,
         );
       }),
     );

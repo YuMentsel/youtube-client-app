@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.loginService.isUser$.subscribe((name) => {
+    this.loginService.userName$.subscribe((name) => {
       this.userName = name;
     });
   }
@@ -31,6 +31,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.loginService.isUser$.unsubscribe();
+    this.loginService.userName$.unsubscribe();
   }
 }

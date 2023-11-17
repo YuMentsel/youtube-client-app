@@ -8,25 +8,25 @@ import { BehaviorSubject } from 'rxjs';
 export class LoginService {
   private readonly token = 'userToken';
 
-  isUser$ = new BehaviorSubject<string>('');
+  userName$ = new BehaviorSubject<string>('');
 
   constructor(private router: Router) {
     const user = localStorage.getItem(this.token);
     if (user !== null) {
-      this.isUser$.next(this.getUserName(user));
+      this.userName$.next(this.getUserName(user));
     }
   }
 
   login(user: string) {
     localStorage.setItem(this.token, user);
     this.router.navigate(['/youtube']);
-    this.isUser$.next(this.getUserName(user));
+    this.userName$.next(this.getUserName(user));
   }
 
   logout() {
     localStorage.removeItem(this.token);
     this.router.navigate(['/auth']);
-    this.isUser$.next('');
+    this.userName$.next('');
   }
 
   isLoggedIn() {
