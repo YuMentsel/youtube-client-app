@@ -7,11 +7,11 @@
         class="login__input"
         type="text"
         formControlName="login"
-        placeholder="Done Joe"
+        placeholder="user@gmail.com"
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="getLoginError('required')">Enter a login!</mat-error>
+      <mat-error>{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="login__field" appearance="fill">
@@ -24,8 +24,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="getPasswordError('required')">Enter a password!</mat-error>
-      <mat-error *ngIf="getPasswordError('pattern')">Password isn't strong enough!</mat-error>
+      <mat-error>{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <button

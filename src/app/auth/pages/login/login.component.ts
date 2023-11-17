@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginFormErrorMessages } from '../../../constants/enums';
 import { LoginService } from '../../services/login.service';
 import { pattern } from '../../../constants/constants';
 
@@ -13,7 +14,7 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService) {
     this.form = new FormGroup({
-      login: new FormControl('', [Validators.required]),
+      login: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.pattern(pattern)]),
     });
   }
@@ -22,8 +23,14 @@ export class LoginComponent {
     this.loginService.login(JSON.stringify(this.form.value));
   }
 
-  checkLength(control: FormControl) {
-    return control.value.trim().length === 0 ? { lengthError: true } : null;
+  getErrorMessage() {
+    const login = this.form.get('login');
+    if (login?.errors?.['required']) return LoginFormErrorMessages.login;
+    if (login?.errors?.['email']) return LoginFormErrorMessages.loginValid;
+
+    const password = this.form.get('password');
+    if (password?.errors?.['required']) return LoginFormErrorMessages.password;
+    return password?.errors?.['email'] ? LoginFormErrorMessages.passwordValid : '';
   }
 
   getLoginError(error: string) {
