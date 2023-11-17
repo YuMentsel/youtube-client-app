@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { ValidateService } from '../../services/validate.service';
+import { AdminFormErrorMessages } from '../../../constants/enums';
 
 @Component({
   selector: 'app-creation-form',
@@ -26,24 +27,36 @@ export class CreationFormComponent implements OnInit {
     });
   }
 
-  get title() {
-    return this.form.get('title');
+  getTitleErrorMessage() {
+    const title = this.form.get('title');
+    if (title?.errors?.['required']) return AdminFormErrorMessages.title;
+    if (title?.errors?.['minlength']) return AdminFormErrorMessages.titleMin;
+    return title?.errors?.['maxlength'] ? AdminFormErrorMessages.titleMax : '';
   }
 
-  get description() {
-    return this.form.get('description');
+  getDescriptionErrorMessage() {
+    const description = this.form.get('description');
+    return description?.errors?.['maxlength'] ? AdminFormErrorMessages.descriptionMax : '';
   }
 
-  get image() {
-    return this.form.get('image');
+  getImageErrorMessage() {
+    const image = this.form.get('image');
+    return image?.errors?.['required'] ? AdminFormErrorMessages.image : '';
   }
 
-  get video() {
-    return this.form.get('video');
+  getVideoErrorMessage() {
+    const video = this.form.get('video');
+    return video?.errors?.['required'] ? AdminFormErrorMessages.video : '';
   }
 
-  get date() {
-    return this.form.get('date');
+  getDateErrorMessage() {
+    const date = this.form.get('date');
+    if (date?.errors?.['required']) return AdminFormErrorMessages.date;
+    return date?.errors?.['notValid'] ? AdminFormErrorMessages.dateValid : '';
+  }
+
+  getTagErrorMessage() {
+    return AdminFormErrorMessages.tags;
   }
 
   get tags() {

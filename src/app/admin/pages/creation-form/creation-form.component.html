@@ -11,9 +11,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="title?.hasError('required')">Please enter a title</mat-error>
-      <mat-error *ngIf="title?.hasError('minlength')">The title is too short</mat-error>
-      <mat-error *ngIf="title?.hasError('maxlength')">The title is too long</mat-error>
+      <mat-error> {{ getTitleErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="admin__field" appearance="fill">
@@ -26,7 +24,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="description?.hasError('maxlength')">The description is too long</mat-error>
+      <mat-error>{{ getDescriptionErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="admin__field" appearance="fill">
@@ -39,7 +37,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="image?.hasError('required')">Please enter a link to the image</mat-error>
+      <mat-error>{{ getImageErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="admin__field" appearance="fill">
@@ -52,7 +50,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="video?.hasError('required')">Please enter a link to the video</mat-error>
+      <mat-error>{{ getVideoErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="admin__field" appearance="fill">
@@ -65,8 +63,7 @@
         matInput
         autocomplete="off"
       />
-      <mat-error *ngIf="date?.hasError('required')">Please enter a creation date</mat-error>
-      <mat-error *ngIf="date?.hasError('notValid')">The date is invalid</mat-error>
+      <mat-error>{{ getDateErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <ng-container formArrayName="tags">
@@ -80,7 +77,7 @@
             placeholder="tag"
             matInput
           />
-          <mat-error *ngIf="tag?.hasError('required')">Please enter a tag</mat-error>
+          <mat-error *ngIf="tag?.hasError('required')">{{ getTagErrorMessage() }}</mat-error>
         </mat-form-field>
       </ng-container>
     </ng-container>

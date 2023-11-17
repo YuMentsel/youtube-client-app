@@ -21,6 +21,18 @@ export enum LoginFormErrorMessages {
   passwordValid = `Your password isn't strong enough (min 8 characters, uppercase and lowercase letters, numbers, special character)`,
 }
 
+export enum AdminFormErrorMessages {
+  title = 'Please enter a title',
+  titleMin = 'The title is too short',
+  titleMax = 'The title is too long',
+  descriptionMax = 'The description is too long',
+  image = 'Please enter a link to the image',
+  video = 'Please enter a link to the video',
+  date = 'Please enter a creation date',
+  dateValid = 'The date is invalid',
+  tags = 'Please enter a tag',
+}
+
 export enum Colors {
   red = '#EB5757',
   yellow = '#F2C94B',
