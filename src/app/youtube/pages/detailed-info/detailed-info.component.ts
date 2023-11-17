@@ -9,7 +9,7 @@ import { YoutubeService } from '../../services/youtube.service';
   styleUrls: ['./detailed-info.component.scss'],
 })
 export class DetailedInfoComponent implements OnInit {
-  id!: string;
+  private id!: string;
 
   searchItem!: SearchItem;
 

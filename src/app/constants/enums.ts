@@ -4,6 +4,23 @@ export enum Period {
   halfYear = 1.57788e10,
 }
 
+export enum SortType {
+  date = 'date',
+  views = 'views',
+}
+
+export enum Direction {
+  asc = 'asc',
+  desc = 'desc',
+}
+
+export enum LoginFormErrorMessages {
+  login = 'Please enter a login email',
+  loginValid = 'The login email is invalid',
+  password = 'Please enter a password',
+  passwordValid = `Your password isn't strong enough (min 8 characters, uppercase and lowercase letters, numbers, special character)`,
+}
+
 export enum Colors {
   red = '#EB5757',
   yellow = '#F2C94B',
