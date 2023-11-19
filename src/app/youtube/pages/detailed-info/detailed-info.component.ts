@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectItemById } from '../../../redux/selectors/youtube.selectors';
 import { Item } from '../../models/search-item.model';
-import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-detailed-info',
@@ -11,11 +13,11 @@ import { YoutubeService } from '../../services/youtube.service';
 export class DetailedInfoComponent implements OnInit {
   private id!: string;
 
-  searchItem!: Item;
+  searchItem$!: Observable<Item<string>>;
 
   constructor(
     private route: ActivatedRoute,
-    private youtubeService: YoutubeService,
+    private store: Store,
     private router: Router,
   ) {}
 
@@ -24,9 +26,10 @@ export class DetailedInfoComponent implements OnInit {
       this.id = params['id'];
     });
 
-    const item = this.youtubeService.getDetailsById(this.id);
+    const item = this.store.select(selectItemById(this.id));
+
     if (item) {
-      this.searchItem = item;
+      this.searchItem$ = item as Observable<Item<string>>;
     } else {
       this.router.navigate(['/not-found']);
     }

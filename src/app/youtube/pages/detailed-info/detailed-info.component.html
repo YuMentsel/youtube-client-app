@@ -1,6 +1,6 @@
-<div class="info">
+<div class="info" *ngIf="searchItem$ | async; let searchItem">
   <app-custom-button
-    [appStatusColor]="this.searchItem.snippet.publishedAt"
+    [appStatusColor]="searchItem.snippet.publishedAt"
     class="info__button"
     (click)="goBack()"
   >

@@ -14,7 +14,7 @@ import { CustomButtonComponent } from '../custom-button/custom-button.component'
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent {
-  @Input() searchItem!: Item;
+  @Input() searchItem!: Item<string>;
 
   constructor(private router: Router) {}
 

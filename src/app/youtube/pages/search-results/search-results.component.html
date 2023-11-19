@@ -1,4 +1,4 @@
-<main *ngIf="youtubeService.isResults" class="main">
+<main *ngIf="searchItems$ | async; let searchItems" class="main">
   <div class="main__container container">
     <app-search-item
       *ngFor="

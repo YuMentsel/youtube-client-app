@@ -1,58 +1,53 @@
 interface ThumbnailItem {
   url: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 interface Thumbnail {
-  default: ThumbnailItem;
+  default?: ThumbnailItem;
   medium: ThumbnailItem;
-  high: ThumbnailItem;
-  standard: ThumbnailItem;
-  maxres: ThumbnailItem;
+  high?: ThumbnailItem;
+  standard?: ThumbnailItem;
+  maxres?: ThumbnailItem;
 }
 
 interface Snippet {
   publishedAt: string;
-  channelId: string;
+  channelId?: string;
   title: string;
   description: string;
   thumbnails: Thumbnail;
-  channelTitle: string;
-  tags: string[];
-  categoryId: string;
-  liveBroadcastContent: string;
+  channelTitle?: string;
+  tags?: string[];
+  categoryId?: string;
+  liveBroadcastContent?: string;
   defaultLanguage?: string;
-  localized: {
+  localized?: {
     title: string;
     description: string;
   };
-  defaultAudioLanguage: string;
+  defaultAudioLanguage?: string;
 }
 
 export interface Statistics {
   viewCount: string;
   likeCount: string;
   dislikeCount?: string;
-  favoriteCount: string;
+  favoriteCount?: string;
   commentCount: string;
 }
 
-export interface SearchItem {
-  kind: string;
-  etag: string;
-  id: {
-    kind: string;
-    videoId: string;
-  };
+export interface Item<T> {
+  kind?: string;
+  etag?: string;
+  videoLink?: string;
+  id: T;
   snippet: Snippet;
   statistics: Statistics;
 }
 
-export interface Item {
+export interface Id {
   kind: string;
-  etag: string;
-  id: string;
-  snippet: Snippet;
-  statistics: Statistics;
+  videoId: string;
 }

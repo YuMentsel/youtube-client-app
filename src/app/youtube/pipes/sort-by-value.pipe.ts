@@ -5,7 +5,7 @@ import { Item } from '../models/search-item.model';
   name: 'sortByValue',
 })
 export class SortByValuePipe implements PipeTransform {
-  transform(items: Item[], value: string): Item[] {
+  transform(items: Item<string>[], value: string): Item<string>[] {
     if (!value) return items;
 
     return items.filter((item) =>
