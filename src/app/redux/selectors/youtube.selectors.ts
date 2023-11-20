@@ -14,6 +14,11 @@ export const selectCustomItems = createSelector(
   (state: YoutubeState): Item<string>[] => state.customItems,
 );
 
+export const selectFavIds = createSelector(
+  selectYoutube,
+  (state: YoutubeState): string[] => state.favIds,
+);
+
 export const selectItems = createSelector(
   selectCustomItems,
   selectYoutubeItems,
@@ -22,3 +27,6 @@ export const selectItems = createSelector(
 
 export const selectItemById = (id: string) =>
   createSelector(selectItems, (items) => items.find((item) => item.id === id));
+
+export const selectBooleanByIdPresenceInFav = (id: string) =>
+  createSelector(selectFavIds, (items) => items.includes(id));

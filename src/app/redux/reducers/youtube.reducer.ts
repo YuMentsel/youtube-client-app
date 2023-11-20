@@ -1,11 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
-import { createCustomItem, fetchItems, removeCustomItem } from '../actions/youtube.action';
+import {
+  addToFavIds,
+  createCustomItem,
+  fetchItems,
+  removeCustomItem,
+  removeFromFavIds,
+} from '../actions/youtube.action';
 import { YoutubeState } from '../models/state.model';
 import { getLsCustomCards } from '../../helpers';
 
 export const initialState: YoutubeState = {
   customItems: getLsCustomCards(),
   youtubeItems: [],
+  favIds: [],
 };
 
 export const youtubeReducer = createReducer(
@@ -22,6 +29,14 @@ export const youtubeReducer = createReducer(
     (state, { id }): YoutubeState => ({
       ...state,
       customItems: state.customItems.filter((item) => item.id !== id),
+    }),
+  ),
+  on(addToFavIds, (state, { id }): YoutubeState => ({ ...state, favIds: [...state.favIds, id] })),
+  on(
+    removeFromFavIds,
+    (state, { id }): YoutubeState => ({
+      ...state,
+      favIds: state.favIds.filter((favId) => favId !== id),
     }),
   ),
   on(fetchItems, (state, { youtubeItems }): YoutubeState => ({ ...state, youtubeItems })),

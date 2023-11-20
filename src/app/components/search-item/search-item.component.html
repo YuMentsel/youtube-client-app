@@ -1,7 +1,7 @@
-<div class="search-item">
+<div *ngIf="searchItem" class="search-item">
   <button
     class="search-item__close"
-    *ngIf="searchItem.kind === 'custom'"
+    *ngIf="searchItem.kind === 'custom'; else favButton"
     [appStatusColor]="searchItem.snippet.publishedAt"
     (click)="removeItem()"
   >
@@ -36,3 +36,13 @@
   >
   <div class="search-item__status" [appStatusColor]="searchItem.snippet.publishedAt"></div>
 </div>
+
+<ng-template #favButton>
+  <button
+    class="search-item__fav"
+    [appStatusColor]="searchItem.snippet.publishedAt"
+    (click)="toggleFav()"
+  >
+    <mat-icon class="search-item__icon">{{ icon }}</mat-icon>
+  </button>
+</ng-template>

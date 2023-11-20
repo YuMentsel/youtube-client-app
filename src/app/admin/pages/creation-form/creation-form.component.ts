@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { nanoid } from 'nanoid';
+import { customKind } from '../../../constants/constants';
 import { Item } from '../../../youtube/models/search-item.model';
 import { ValidateService } from '../../services/validate.service';
 import { AdminFormErrorMessages } from '../../../constants/enums';
@@ -88,7 +89,7 @@ export class CreationFormComponent implements OnInit {
     return {
       videoLink: video,
       id,
-      kind: 'custom',
+      kind: customKind,
       snippet: {
         publishedAt: date,
         title,

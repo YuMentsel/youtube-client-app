@@ -4,6 +4,11 @@ export enum Period {
   halfYear = 1.57788e10,
 }
 
+export enum Fav {
+  yes = 'mood',
+  no = 'radio_button_unchecked',
+}
+
 export enum SortType {
   date = 'date',
   views = 'views',

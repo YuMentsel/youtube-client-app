@@ -16,6 +16,11 @@ const routes: Routes = [
     canActivate: [youtubeGuard],
   },
   {
+    path: 'favorite',
+    loadChildren: () => import('./favorite/favorite.module').then((m) => m.FavoriteModule),
+    canActivate: [youtubeGuard],
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
     canActivate: [youtubeGuard],

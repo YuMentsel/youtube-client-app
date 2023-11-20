@@ -26,6 +26,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.sortService.toggleSortForm(false);
     this.subscription.unsubscribe();
   }
 }
