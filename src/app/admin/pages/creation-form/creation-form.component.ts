@@ -73,7 +73,9 @@ export class CreationFormComponent implements OnInit {
   }
 
   submitForm() {
-    localStorage.setItem('card', JSON.stringify(this.form.value));
+    const lsString = localStorage.getItem('cards');
+    const lsCards: Item<string>[] = lsString ? JSON.parse(lsString) : [];
+    localStorage.setItem('cards', JSON.stringify([this.createCustomItem(), ...lsCards]));
     this.store.dispatch(createCustomItem({ customItem: this.createCustomItem() }));
     this.resetForm();
   }
@@ -86,6 +88,7 @@ export class CreationFormComponent implements OnInit {
     return {
       videoLink: video,
       id,
+      kind: 'custom',
       snippet: {
         publishedAt: date,
         title,

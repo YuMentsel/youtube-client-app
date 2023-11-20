@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { createCustomItem, fetchItems } from '../actions/youtube.action';
+import { createCustomItem, fetchItems, removeCustomItem } from '../actions/youtube.action';
 import { YoutubeState } from '../models/state.model';
+import { getLsCustomCards } from '../../helpers';
 
 export const initialState: YoutubeState = {
-  customItems: [],
+  customItems: getLsCustomCards(),
   youtubeItems: [],
 };
 
@@ -13,7 +14,14 @@ export const youtubeReducer = createReducer(
     createCustomItem,
     (state, { customItem }): YoutubeState => ({
       ...state,
-      customItems: [...state.customItems, customItem],
+      customItems: [customItem, ...state.customItems],
+    }),
+  ),
+  on(
+    removeCustomItem,
+    (state, { id }): YoutubeState => ({
+      ...state,
+      customItems: state.customItems.filter((item) => item.id !== id),
     }),
   ),
   on(fetchItems, (state, { youtubeItems }): YoutubeState => ({ ...state, youtubeItems })),

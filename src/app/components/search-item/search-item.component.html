@@ -1,4 +1,12 @@
 <div class="search-item">
+  <button
+    class="search-item__close"
+    *ngIf="searchItem.kind === 'custom'"
+    [appStatusColor]="searchItem.snippet.publishedAt"
+    (click)="removeItem()"
+  >
+    <mat-icon class="search-item__icon">close</mat-icon>
+  </button>
   <div class="search-item__preview">
     <img
       class="search-item__image"
