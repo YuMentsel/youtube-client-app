@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { YoutubeInterceptor } from './youtube/interceptor/youtube.interceptor';
 import { youtubeReducer } from './redux/reducers/youtube.reducer';
+import { YoutubeEffects } from './redux/effects/youtube.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,7 @@ import { youtubeReducer } from './redux/reducers/youtube.reducer';
     SearchItemComponent,
     StoreModule.forRoot({ youtube: youtubeReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([YoutubeEffects]),
   ],
 })
 export class AppModule {}

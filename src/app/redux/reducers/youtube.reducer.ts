@@ -3,6 +3,8 @@ import {
   addToFavIds,
   createCustomItem,
   fetchItems,
+  getPageInfo,
+  getPageToken,
   removeCustomItem,
   removeFromFavIds,
 } from '../actions/youtube.action';
@@ -13,6 +15,8 @@ export const initialState: YoutubeState = {
   customItems: getLsCustomCards(),
   youtubeItems: [],
   favIds: [],
+  page: { next: '', prev: '' },
+  token: '',
 };
 
 export const youtubeReducer = createReducer(
@@ -40,4 +44,6 @@ export const youtubeReducer = createReducer(
     }),
   ),
   on(fetchItems, (state, { youtubeItems }): YoutubeState => ({ ...state, youtubeItems })),
+  on(getPageInfo, (state, { page }): YoutubeState => ({ ...state, page: { ...page } })),
+  on(getPageToken, (state, { token }): YoutubeState => ({ ...state, token })),
 );

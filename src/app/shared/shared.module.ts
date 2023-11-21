@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 @NgModule({
-  declarations: [],
   imports: [CommonModule, AngularMaterialModule, FormsModule],
   exports: [AngularMaterialModule, FormsModule],
 })

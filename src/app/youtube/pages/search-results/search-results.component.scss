@@ -1,7 +1,36 @@
-.main__container {
+.main {
   display: flex;
   justify-content: center;
-  gap: 29px;
-  flex-wrap: wrap;
-  padding: 30px 20px;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    gap: 29px;
+    flex-wrap: wrap;
+    padding: 30px 20px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
+
+  &__button {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2979ff;
+    color: #ffffff;
+    cursor: pointer;
+    &:disabled {
+      background-color: #c5c5c5;
+      color: #575757;
+      cursor: auto;
+    }
+  }
 }

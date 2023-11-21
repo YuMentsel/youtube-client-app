@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, filter, map, mergeMap, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { Id, Item } from '../models/search-item.model';
-import { maxResults, minSearchLength } from '../../constants/constants';
+import { Id } from '../models/search-item.model';
+import { maxResults } from '../../constants/constants';
 import { Response } from '../models/search-response.model';
-import { fetchItems } from '../../redux/actions/youtube.action';
+import { fetchSearchItems, getPageInfo } from '../../redux/actions/youtube.action';
 
 @Injectable({
   providedIn: 'root',
@@ -13,37 +13,41 @@ import { fetchItems } from '../../redux/actions/youtube.action';
 export class YoutubeService {
   searchValue$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  isResults = false;
+  pageToken$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  searchItems$: Observable<Item<string>[]> = this.searchValue$.pipe(
-    filter((value) => value.length >= minSearchLength),
-    mergeMap((query) => this.getIdsByValue(query)),
-    switchMap((ids) => this.getById(ids)),
-    tap((items) => this.store.dispatch(fetchItems({ youtubeItems: items }))),
-  );
+  customCount$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
+  isResults = false;
 
   constructor(
     private httpClient: HttpClient,
     private store: Store,
   ) {}
 
-  getIdsByValue(query: string): Observable<string> {
+  getIdsByValue(query: string): Observable<Response<Id>> {
     const params = new HttpParams()
       .set('type', 'video')
       .set('part', 'snippet')
-      .set('maxResults', maxResults)
+      .set('maxResults', maxResults - this.customCount$.getValue())
+      .set('pageToken', this.pageToken$.getValue())
       .set('q', query);
 
-    return this.httpClient
-      .get<Response<Id>>('search', { params })
-      .pipe(map((res: Response<Id>) => res.items.map((item) => item.id.videoId).join(',')));
+    return this.httpClient.get<Response<Id>>('search', { params }).pipe(
+      map((res: Response<Id>) => {
+        this.store.dispatch(
+          getPageInfo({ page: { next: res.nextPageToken || '', prev: res.prevPageToken || '' } }),
+        );
+        return res;
+      }),
+    );
   }
 
-  getById(id: string): Observable<Item<string>[]> {
+  getById(id: string): Observable<Response<string>> {
     const params = new HttpParams().set('id', id).set('part', 'snippet,statistics');
+    return this.httpClient.get<Response<string>>('videos', { params });
+  }
 
-    return this.httpClient
-      .get<Response<string>>('videos', { params })
-      .pipe(map((result) => result.items));
+  getNewPage() {
+    this.store.dispatch(fetchSearchItems({ value: this.searchValue$.getValue() }));
   }
 }

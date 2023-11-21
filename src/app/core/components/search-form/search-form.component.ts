@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { BehaviorSubject, Subscription, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { minSearchLength, requestDelay } from '../../../constants/constants';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
-import { fetchItems } from '../../../redux/actions/youtube.action';
+import { fetchItems, fetchSearchItems } from '../../../redux/actions/youtube.action';
 
 @Component({
   selector: 'app-search-form',
@@ -22,9 +22,14 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchSubscription = this.searchValue$
-      .pipe(debounceTime(requestDelay), distinctUntilChanged())
-      .subscribe((el) => {
-        this.youtubeService.searchValue$.next(el);
+      .pipe(
+        filter((val) => val.length >= minSearchLength),
+        debounceTime(requestDelay),
+        distinctUntilChanged(),
+      )
+      .subscribe((value) => {
+        this.youtubeService.searchValue$.next(value);
+        this.store.dispatch(fetchSearchItems({ value }));
       });
   }
 

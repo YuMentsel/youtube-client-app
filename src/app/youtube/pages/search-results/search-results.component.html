@@ -9,4 +9,26 @@
       [searchItem]="item"
     ></app-search-item>
   </div>
+  <div class="main__buttons">
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      class="main__button"
+      (click)="goToPrevPage()"
+      [disabled]="!prevPage"
+    >
+      <mat-icon class="header__settings-icon">navigate_before</mat-icon>
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      class="main__button"
+      (click)="goToNextPage()"
+      [disabled]="!nextPage"
+    >
+      <mat-icon class="header__settings-icon">navigate_next</mat-icon>
+    </button>
+  </div>
 </main>
