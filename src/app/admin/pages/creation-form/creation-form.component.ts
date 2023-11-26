@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { nanoid } from 'nanoid';
-import { customKind } from '../../../constants/constants';
 import { Item } from '../../../youtube/models/search-item.model';
 import { ValidateService } from '../../services/validate.service';
 import { AdminFormErrorMessages } from '../../../constants/enums';
 import { createCustomItem } from '../../../redux/actions/youtube.action';
+import { CustomItem } from '../../models/custom-item.model';
 
 @Component({
   selector: 'app-creation-form',
@@ -76,34 +75,10 @@ export class CreationFormComponent implements OnInit {
   submitForm() {
     const lsString = localStorage.getItem('cards');
     const lsCards: Item<string>[] = lsString ? JSON.parse(lsString) : [];
-    localStorage.setItem('cards', JSON.stringify([this.createCustomItem(), ...lsCards]));
-    this.store.dispatch(createCustomItem({ customItem: this.createCustomItem() }));
+    const customItem = new CustomItem(this.form.value);
+    localStorage.setItem('cards', JSON.stringify([customItem, ...lsCards]));
+    this.store.dispatch(createCustomItem({ customItem }));
     this.resetForm();
-  }
-
-  createCustomItem(): Item<string> {
-    const { title, description, image, video, date } = this.form.value;
-    const id = nanoid(11);
-    const viewCount = Math.floor(Math.random() * 10000);
-
-    return {
-      videoLink: video,
-      id,
-      kind: customKind,
-      snippet: {
-        publishedAt: date,
-        title,
-        description,
-        thumbnails: {
-          medium: { url: image },
-        },
-      },
-      statistics: {
-        viewCount: viewCount.toString(),
-        likeCount: Math.floor(viewCount / 5).toString(),
-        commentCount: Math.floor(viewCount / 12).toString(),
-      },
-    };
   }
 
   resetForm() {

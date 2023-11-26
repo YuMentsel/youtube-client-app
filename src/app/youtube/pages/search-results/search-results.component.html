@@ -9,7 +9,7 @@
       [searchItem]="item"
     ></app-search-item>
   </div>
-  <div class="main__buttons">
+  <div *ngIf="searchItems.length" class="main__buttons">
     <button
       type="submit"
       mat-raised-button
