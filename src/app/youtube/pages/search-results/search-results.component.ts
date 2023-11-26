@@ -55,7 +55,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   goToPrevPage() {
-    this.youtubeService.pageToken$.next(this.nextPage);
+    this.youtubeService.pageToken$.next(this.prevPage);
     this.store.dispatch(getPageToken({ token: this.prevPage }));
     this.youtubeService.getNewPage();
   }

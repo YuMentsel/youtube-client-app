@@ -39,9 +39,7 @@ export class SearchItemComponent implements OnInit, OnDestroy {
     if (this.searchItem.kind !== customKind)
       this.subscription = this.store
         .select(selectBooleanByIdPresenceInFav(this.searchItem.id))
-        .subscribe((value) => { // eslint-disable-line
-          this.icon = value ? Fav.yes : Fav.no;
-        });
+        .subscribe((value) => (this.icon = value ? Fav.yes : Fav.no)); // eslint-disable-line
   }
 
   showDetailedInfo(): void {
