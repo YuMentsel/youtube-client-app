@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { LoginService } from '../../../auth/services/login.service';
 
 @Component({
@@ -10,10 +9,7 @@ import { LoginService } from '../../../auth/services/login.service';
 export class ProfileComponent implements OnInit, OnDestroy {
   userName = '';
 
-  constructor(
-    private router: Router,
-    private loginService: LoginService,
-  ) {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.loginService.userName$.subscribe((name) => {
@@ -23,7 +19,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.loginService.logout();
-    this.router.navigate(['/login']);
   }
 
   getButtonName(): string {
