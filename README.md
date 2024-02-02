@@ -1,5 +1,8 @@
 # YoutubeClientApp
 
+During the Angular course, I implemented the YouTube client app. You can refer to the [Figma mockup](https://www.figma.com/file/tS3Zqk138yXUmRxSWKDv4r/YouTube-client?node-id=0%3A1)
+#### Deploy: https://rolling-scopes-school.github.io/yumentsel-ANGULAR2023Q4/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 
 ## Development server
